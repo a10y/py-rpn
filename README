@@ -1,0 +1,6 @@
+Python RPN Module
+
+Includes a repl that starts when the script is run interactively,
+as well as a general-purpose line-by-line RPN Parser.
+
+-Andrew :)
