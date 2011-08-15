@@ -41,33 +41,13 @@ def repl():
 
 		line = line.split(" ")
 
-		if line[0] in commands:
-			eval(__handlecommand__(line[0], stack))
-
-		elif line[-1] in operators and len(line) % 2 == 0:
+		if line[-1] in operators and len(line) % 2 == 0:
 			num = str(stack.pop())
 			answer = eval(num + line[-1] + str(parse(" ".join(line[0:len(line)-1])))) 
 		else:
 			answer = str(parse(" ".join(line)))
 		stack.append(answer)
 		print answer
-
-def __handlecommand__(command, stack):
-	"""
-	Handles a command, and returns a string that will adjust the
-	'stack' accordingly
-	"""
-	if command == "printstack":
-		print "Stack: "
-		for num in stack:
-			print num
-		return "None"
-	elif command == "exit":
-		print
-		print "Goodbye :)"
-		sys.exit(0)
-	elif command == "clearstack":
-		return "stack = []"
 
 def credits():
 	print "Welcome to PyRPN! PyRPN is a console, stack-based RPN calculator"
