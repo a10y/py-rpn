@@ -37,18 +37,13 @@ def repl():
 	commands  = ['printstack', 'clearstack', 'exit']
 	while True:
 		line = str(raw_input("> ")).strip()
-		answer = line
-
-		line = line.split(" ")
-
-		if line[-1] in operators and len(line) % 2 == 0:
-			num = str(stack.pop())
-			answer = eval(num + line[-1] + str(parse(" ".join(line[0:len(line)-1])))) 
+		if len(line.split(" ")) % 2 is 0:
+			answer = parse(str(stack.pop()) + " " + line)
 		else:
-			answer = str(parse(" ".join(line)))
-		stack.append(answer)
-		print answer
+			answer = parse(line)
 
+		print(answer)
+		stack.append(answer)
 def credits():
 	print "Welcome to PyRPN! PyRPN is a console, stack-based RPN calculator"
 	print "with a stack that is limited only by your computer's RAM."
